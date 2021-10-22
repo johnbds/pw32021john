@@ -1,0 +1,29 @@
+1 Filmes
+2             id
+3             titulo
+4             sinopse
+5             ano
+6             pais
+7             genero
+8             diretor
+9             trailer
+10            capa
+11            duracao
+12
+13 Genero
+14                   id
+15                   descricao
+16
+17Diretor
+18                  id
+19                  nome
+20
+21 Pais
+22                  id
+23                  nome
+24                  sigla
+                    idioma
+25
+26 Idioma
+27                id
+28                descricao

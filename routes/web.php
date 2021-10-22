@@ -24,3 +24,7 @@ Route::get('/teste/{nome}', function ($nome){
 Route::get('/soma/{n1}/{n2}', function ($n1, $n2){
     return "<h1>A soma e: ".$n1+$n2."!</h1>";
 });
+// Fazendo a rota desta forma , deu erro :(
+//Route::get('genres', [\App\Http\Controllers\GenreController::class, 'index']);
+
+Route::resource('genres', \App\http\Controllers\GenreController::class);
