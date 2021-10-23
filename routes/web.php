@@ -29,7 +29,7 @@ Route::get('layout', function (){
     return view('admin.layout');
 });
 
-//Route::get('genres', [\App\Http\Controllers\GenreController::class, 'index']);
+
 Route::prefix('admin')->group(function (){
     Route::resource('genres', \App\Http\Controllers\GenreController::class);
     Route::resource('directors', \App\Http\Controllers\DirectorController::class);
