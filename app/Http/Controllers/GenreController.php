@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -14,7 +14,7 @@ class GenreController extends Controller
     public function index()
     {
         $genres = Genre::all();
-        return json_encode($genres);
+        return view('admin.genres.index', compact('genres'));
     }
 
     /**
@@ -24,7 +24,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.genres.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Genre::create($request->all());
+        return redirect()->route('genres.index');
     }
 
     /**
@@ -46,8 +47,7 @@ class GenreController extends Controller
      */
     public function show($id)
     {
-        $genre = Genre::findOrFail($id);
-        return json_encode($genre);
+        return abort(404);
 
     }
 
@@ -57,9 +57,9 @@ class GenreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Genre $genre)
     {
-        //
+        return view('admin.genres.edit', compact('genre'));
     }
 
     /**
@@ -69,9 +69,10 @@ class GenreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Genre $genre)
     {
-        //
+        $genre->update($request->all());
+        return redirect()->route('genres.index');
     }
 
     /**
@@ -80,8 +81,9 @@ class GenreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+        return redirect()->route('genres.index');
     }
 }
